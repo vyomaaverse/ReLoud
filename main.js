@@ -1,6 +1,10 @@
 let speech = new SpeechSynthesisUtterance();
 speech.lang = "en";
 
+let speaking = false;
+speech.onstart = () => { speaking = true; }
+speech.onend = () => { speaking = false; }
+
 let voices = [];
 window.speechSynthesis.onvoiceschanged = () => {
   voices = window.speechSynthesis.getVoices();
@@ -32,8 +36,10 @@ document.querySelector("#voices").addEventListener("change", () => {
 });
 
 document.querySelector("#start").addEventListener("click", () => {
-  speech.text = document.querySelector("textarea").value;
-  window.speechSynthesis.speak(speech);
+  if (!speaking) {
+    speech.text = document.querySelector("textarea").value;
+    window.speechSynthesis.speak(speech);
+  }
 });
 
 document.querySelector("#pause").addEventListener("click", () => {
