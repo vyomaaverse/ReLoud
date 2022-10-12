@@ -1,9 +1,15 @@
-
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: 'Poppins', sans-serif;
     background: #ff6e7f;  
     background: -webkit-linear-gradient(to right, #bfe9ff, #ff6e7f);  
-    background: linear-gradient(to right, #bfe9ff, #ff6e7f); 
+    background: linear-gradient(to right, #bfe9ff, #ff6e7f);
+    width: 100% !important;
+    overflow-x: hidden;
   }
   
   .container  {
@@ -41,6 +47,8 @@ h1{
   
   footer{
       padding-top:30px;
+      max-width: 100%;
+      overflow: hidden;
   }
 
   i{
@@ -52,4 +60,8 @@ h1{
       margin-bottom:0em;
   }
  
-  
+  @media (max-width: 800px) {
+    .responsive-flex {
+      flex-direction: column !important;
+    }
+  }
